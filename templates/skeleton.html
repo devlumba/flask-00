@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flask-01 --> {% block title %} {% endblock title %} </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='skeleton.css') }}">
+
+    {% block head %}{% endblock head %}
+</head>
+<body>
+<header>
+ THIS IS A HEADER WITH NO LINKS WHATSOEVER</header>
+<div class="block_body">{% block body %}
+{% endblock body %}
+</div>
+{% block js %}{% endblock js %}
+</body>
+</html>

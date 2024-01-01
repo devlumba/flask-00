@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>nothing</title>
-</head>
-<body>
-nothing
-</body>
-</html>
+{% extends "skeleton.html" %}
+{% block title %}
+    Home
+{% endblock title %}
+{% block body %}
+"/" page <br>
+<a href="{{ url_for('get_current_user') }}">User - Me</a> <br>
+<a href="{{ url_for('log_in') }}">Login page</a> <br>
+<a href="{{ url_for('log_out') }}">Logout page</a> <br>
+{% endblock body %}
