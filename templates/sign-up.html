@@ -12,10 +12,9 @@
     {% endwith %}
     <div>
         <form action="#" method="post">
-            <p>Ur name</p>
-            <p><input type="text" placeholder="Username" name="username"></p>
-            <p><input type="email" placeholder="Email" name="email"></p>
-            <p><input type="checkbox" name="remember">Remember Me</p>
+            <p>Sign Up</p>
+            <p><input type="email" name="email" placeholder="Your Email" value="{{email if email}}"></p>
+            <p><input type="text" name="username" id="" placeholder="Your Username"></p>
             <p><input type="submit" value="Submit"></p>
         </form>
     </div>

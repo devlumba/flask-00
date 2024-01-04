@@ -1,0 +1,21 @@
+just to not forget
+
+here's User model:
+
+class User(db.Model):
+id = db.Column("id", db.Integer, primary_key=True)
+username = db.Column("username", db.String(100), unique=True, nullable=False)
+email = db.Column("email", db.String(80), unique=True, nullable=False)
+
+def __repr__(self):
+return '<User %r>' % self.username
+
+terminal:
+
+$ export FLASK_APP=main.py
+$ flask shell
+»> db.create_all()
+»> admin = User(username='admin', email='admin@example.com')
+»> db.session.add(admin)
+»> db.session.commit()
+»> User.query.all()
