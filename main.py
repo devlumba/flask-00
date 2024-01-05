@@ -1,4 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, request, session, flash
+# from flask_login import LoginManager, login_user
 from datetime import timedelta
 from flask_sqlalchemy import SQLAlchemy
 
@@ -8,6 +9,8 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///users.sqlite3"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.permanent_session_lifetime = timedelta(hours=1)
 db = SQLAlchemy(app)
+# login_manager = LoginManager()
+# login_manager.init_app(app)
 #
 # if __name__ == "__main__":
 #     with app.app_context():
@@ -34,14 +37,20 @@ def get_slash():
 def get_current_user():
     if "user" in session:
         user = session["user"]
-        return redirect(url_for("get_user", user_id=user))
+        email = session["email"]
+        return redirect(url_for("get_user", user=user))
     else:
         return redirect(url_for('log_in'))
 
 
-@app.route("/user/<user_id>")
-def get_user(user_id):
-    return render_template("usr.html", id=user_id)
+@app.route("/user/<user>")
+def get_user(user):
+    return render_template("usr.html", user=user)
+
+
+@app.route("/users")
+def get_users():
+    return render_template("users.html", users=User.query.all())
 
 
 @app.route("/login", methods=["POST", "GET"])
@@ -60,9 +69,10 @@ def log_in():
             session["user"] = user
             session["email"] = email
             flash("You successfully signed in")
-            return redirect("/")
-        flash("You successfully logged in", "info")
-        return redirect(url_for('get_user', user_id=user))
+            return redirect(url_for("get_user", user=found_user.username))
+        else:
+            flash("Incorrect username of email")
+            return redirect(url_for("log_in"))
     else:
         if "user" in session:
             flash("You already logged in", 'info')
@@ -74,9 +84,9 @@ def log_in():
 def log_out():
     if "email" in session:
         email = session["email"]
-        name = session["name"]
+        user = session["user"]
         flash("You successfully have been logged out!", "info")
-        session.pop("name", None)
+        session.pop("user", None)
         session.pop("email", None)
     else:
         flash("You aren't logged in", "info")
@@ -106,5 +116,4 @@ def sign_up():
         flash("You have successfully signed up!", "info")
         return redirect("/")
     return render_template("sign-up.html")
-
 

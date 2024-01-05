@@ -33,3 +33,28 @@ header {
     background-color: #edeae1;
     border-radius: 25px;
 }
+
+.user {
+    background-color: #fafafa;
+    width: 40vw;
+    height: 15vh;
+    margin: 10px;
+    border-radius: 10px;
+    border-width: 4px;
+    border-style: solid;
+    border-color: #333333;
+    font-size: 14px;
+}
+
+.user i {
+    margin: 5px;
+}
+.user .userimage {
+    width: 5vw;
+    height: 7vh;
+    margin: 5px;
+    border-radius: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: pink;
+}
