@@ -1,0 +1,13 @@
+{% extends "skeleton.html" %}
+{% block title %} All Users {% endblock title %}
+{% block body %}
+    {% for i in users %}
+        <div class="user">
+            <i>{{i.username}}</i>
+            <hr width="100%;" color="#333333" size="3;" height="5px;">
+            <i>Username: {{i.username}}</i> <br>
+            <i>Email: {{i.email}}</i> <br>
+            <img class="userimage" src="{{url_for('static', filename='default.png')}}" alt="">
+        </div>
+    {% endfor %}
+{% endblock body %}
