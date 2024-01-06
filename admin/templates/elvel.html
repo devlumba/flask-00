@@ -1,0 +1,20 @@
+{% extends "skeleton.html" %}
+{% block title %}
+    Home
+{% endblock title %}
+{% block body %}
+    {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="messages">
+                   {% for i in messages %}
+                        <p>{{i}}</p>
+                   {% endfor %}
+                </div>
+            {% endif %}
+    {% endwith %}
+"/" page <br>
+<a href="{{ url_for('get_current_user') }}">User - Me</a> <br>
+<a href="{{ url_for('log_in') }}">Login page</a> <br>
+<a href="{{ url_for('log_out') }}">Logout page</a> <br>
+<a href="{{ url_for('sign_up') }}">Sign Up</a> <br>
+{% endblock body %}

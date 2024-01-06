@@ -1,10 +1,10 @@
-from main import db, app
+from .main import db, app
 
-class Users(db.Model):
-    _id = db.Column("id", db.Integer, primary_key=True)
-    name = db.Column(db.String(100))
-    email = db.Column(db.String(40))
 
-    def __init__(self, name, email):
-        self.name = name
-        self.email = email
+class User(db.Model):
+    id = db.Column("id", db.Integer, primary_key=True)
+    username = db.Column("username", db.String(100), unique=True, nullable=False)
+    email = db.Column("email", db.String(80), unique=True, nullable=False)
+
+    def __repr__(self):
+        return '<User %r>' % self.username
