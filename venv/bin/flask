@@ -1,4 +1,4 @@
-#!/run/media/lumba/373ef97b-06e6-4cac-85c7-57d06ce44d03/code/flask-01/venv/bin/python3
+#!/home/lumba/code/flask-01/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
